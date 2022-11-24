@@ -1,18 +1,16 @@
 {
-  "name": "starter-rest-api",
+  "name": "watchpark_backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd nodemon index.js",
-    "repl": "env-cmd node"
+    "server": "nodemon index.js",
+    "start": "supervisor index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Kam Lasater <kam.lasater@cyclic.sh>",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
