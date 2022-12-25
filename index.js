@@ -5,11 +5,16 @@ app.use(express.json());
 const connect = require("./config/db");
 var cors = require("cors");
 const { moviesRouter } = require("./Routes/Movies.route");
+const { userRouter } = require("./Routes/User.route");
 
 app.use(cors());
 
 app.use("/movies", moviesRouter);
-const PORT = process.env.PORT || 3000;
+
+app.use("/login",userRouter)
+
+const PORT = process.env.PORT || 3000
+// console.log(PORT)
 app.listen(PORT, async () => {
   try {
     await connect();

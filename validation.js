@@ -11,6 +11,8 @@ const createMovieSchema = Joi.object({
   t4KFile: Joi.string().min(1).trim(),
 });
 
+
+
 module.exports = createMovieSchema;
 
 //   title: { type: String, required: true },
