@@ -66,7 +66,7 @@ const getTvShow = async (req, res) => {
     postTvShow,
     putTvShow,
     deleteTvShow,
-    searchTvShow
+    // searchTvShow
   };
   
   module.exports = { TvShowController };
