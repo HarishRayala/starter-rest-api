@@ -6,10 +6,13 @@ const connect = require("./config/db");
 var cors = require("cors");
 const { moviesRouter } = require("./Routes/Movies.route");
 const { userRouter } = require("./Routes/User.route");
+const { TvShowRouter } = require("./Routes/Tvshows.route");
 
 app.use(cors());
 
 app.use("/movies", moviesRouter);
+
+app.use("/tvshows",TvShowRouter)
 
 app.use("/login",userRouter)
 

@@ -23,7 +23,7 @@ const getMovieByTitle = async (req, res) => {
 
 const postMovie = async (req, res) => {
   const payload = req.body;
-  const { value, error } = validationSchema.validate(payload);
+  const { value, error } = validationSchema.createMovieSchema.validate(payload);
   if (error) {
     return res.status(406).send({ status: false, message: error.message });
   } else {
