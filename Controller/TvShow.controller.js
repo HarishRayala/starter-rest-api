@@ -11,7 +11,7 @@ const getTvShow = async (req, res) => {
       .limit(size)
       .lean()
       .exec();
-    const totalpages = Math.ceil((await movie.find().countDocuments()) / size);
+    const totalpages = Math.ceil((await movie.find({season:{$exists:true}}).countDocuments()) / size);
     return res.status(201).send({ TvShowData, totalpages });
   };
   

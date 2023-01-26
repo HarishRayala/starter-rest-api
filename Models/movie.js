@@ -8,7 +8,7 @@ const MovieSchema = new mongoose.Schema(
     year: { type: String, required: true },
     language: { type: String, required: true },
     imgURL: { type: String, required: true },
-    episodes:[String],
+    episodes:{type:[String]},
     t720File: { type: String },
     t1080File: { type: String },
     t4KFile: { type: String },
