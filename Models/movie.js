@@ -3,10 +3,12 @@ const mongoose = require("mongoose");
 const MovieSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
+    season:{type:String},
     genre: { type: String, required: true },
     year: { type: String, required: true },
     language: { type: String, required: true },
     imgURL: { type: String, required: true },
+    episodes:[String],
     t720File: { type: String },
     t1080File: { type: String },
     t4KFile: { type: String },
