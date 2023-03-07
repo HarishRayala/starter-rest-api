@@ -5,13 +5,13 @@ const getMovie = async (req, res) => {
   const page = req.query.page || 1;
   const size = req.query.size || 6;
   const movieData = await movie
-    .find({season:{$exists:false}})
+    .find({season:{$eq:null}})
     .sort({ createdAt: -1 })
     .skip((page - 1) * size)
     .limit(size)
     .lean()
     .exec();
-  const totalpages = Math.ceil((await movie.find({season:{$exists:false}}).countDocuments()) / size);
+  const totalpages = Math.ceil((await movie.find({season:{$eq: null}}).countDocuments()) / size);
   return res.status(201).send({ movieData, totalpages });
 };
 
