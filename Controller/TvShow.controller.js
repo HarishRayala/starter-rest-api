@@ -5,13 +5,13 @@ const getTvShow = async (req, res) => {
     const page = req.query.page || 1;
     const size = req.query.size || 6;
     const TvShowData = await movie
-      .find({season:{$exists:true}})
+      .find({season:{$ne:null}})
       .sort({ updatedAt: -1 })
       .skip((page - 1) * size)
       .limit(size)
       .lean()
       .exec();
-    const totalpages = Math.ceil((await movie.find({season:{$exists:true}}).countDocuments()) / size);
+    const totalpages = Math.ceil((await movie.find({season:{$ne:null}}).countDocuments()) / size);
     return res.status(201).send({ TvShowData, totalpages });
   };
   
