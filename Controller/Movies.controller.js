@@ -92,6 +92,7 @@ const MoviesController = {
   putMovie,
   deleteMovie,
   searchMovie,
+  updateRating,
 };
 
 module.exports = { MoviesController };
