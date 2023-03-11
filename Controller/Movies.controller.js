@@ -5,14 +5,39 @@ const getMovie = async (req, res) => {
   const page = req.query.page || 1;
   const size = req.query.size || 6;
   const movieData = await movie
-    .find({season:{$eq:null}})
+    .find({ season: { $eq: null } })
     .sort({ createdAt: -1 })
     .skip((page - 1) * size)
     .limit(size)
     .lean()
     .exec();
-  const totalpages = Math.ceil((await movie.find({season:{$eq: null}}).countDocuments()) / size);
+  const totalpages = Math.ceil(
+    (await movie.find({ season: { $eq: null } }).countDocuments()) / size
+  );
   return res.status(201).send({ movieData, totalpages });
+};
+
+const updateRating = async (req, res) => {
+  const movieData = await movie.find().lean().exec();
+  try {
+    for (const eachMovie of movieData) {
+      if (eachMovie.rating) continue;
+      let url = `https://omdbapi.com/?t=${eachMovie.title}&apikey=8d18db36`;
+      let res = await fetch(url);
+      let data = await res.json();
+
+      if (data.imdbRating) {
+        await movie.updateOne(
+          { _id: eachMovie._id },
+          { rating: data.imdbRating }
+        );
+      }
+    }
+    return res.status(201).send({ status: "success" });
+  } catch (err) {
+    console.log(err);
+    return res.status(501).send({ status: "failed" });
+  }
 };
 
 const getMovieByTitle = async (req, res) => {

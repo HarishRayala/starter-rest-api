@@ -5,6 +5,8 @@ moviesRouter.use(express.json());
 
 moviesRouter.get("/", MoviesController.getMovie);
 
+moviesRouter.get("/updateRating", MoviesController.updateRating);
+
 moviesRouter.get("/search", MoviesController.searchMovie);
 
 moviesRouter.post("/create", MoviesController.postMovie);
