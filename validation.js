@@ -9,6 +9,7 @@ const createMovieSchema = Joi.object({
   t720File: Joi.string().min(1).trim(),
   t1080File: Joi.string().min(1).trim(),
   t4KFile: Joi.string().min(1).trim(),
+  youtube: Joi.string().min(1).trim(),
 });
 
 const createTvShowSchema = Joi.object({
