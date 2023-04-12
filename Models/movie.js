@@ -13,6 +13,7 @@ const MovieSchema = new mongoose.Schema(
     season: { type: String },
     episodes: [String],
     tvShow: Boolean,
+    youtube:{type:String},
     rating: { type: String },
   },
   { timestamps: true }
