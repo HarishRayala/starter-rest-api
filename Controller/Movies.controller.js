@@ -88,7 +88,7 @@ const searchMovie = async (req, res) => {
 const deepSearchMovie = async (req, res) => {
   const { s: searchTerm } = req.query;
   if (searchTerm && searchTerm.trim() !== "") {
-    const searchRequest = await axios.get(
+    const searchRequest = await fetch(
       `https://yts.mx/api/v2/list_movies.json?limit=50&sort_by=year&query_term=${searchTerm.trim()}`
     );
 
