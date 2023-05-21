@@ -87,12 +87,13 @@ const searchMovie = async (req, res) => {
 
 const deepSearchMovie = async (req, res) => {
   const { s: searchTerm } = req.query;
+  console.log("searchTerm:", searchTerm);
   if (searchTerm && searchTerm.trim() !== "") {
     const searchRequest = await fetch(
       `https://yts.mx/api/v2/list_movies.json?limit=50&sort_by=year&query_term=${searchTerm.trim()}`
     );
     const json = await searchRequest.json();
-    return res.status(201).send(searchRequest);
+    return res.status(201).send(json);
   }
   return res.status(403).send({ status: false, message: "No title Entered" });
 };
