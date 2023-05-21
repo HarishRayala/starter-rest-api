@@ -9,6 +9,8 @@ moviesRouter.get("/updateRating", MoviesController.updateRating);
 
 moviesRouter.get("/search", MoviesController.searchMovie);
 
+moviesRouter.get("/deepSearch", MoviesController.deepSearchMovie);
+
 moviesRouter.post("/create", MoviesController.postMovie);
 
 moviesRouter.put("/:id", MoviesController.putMovie);

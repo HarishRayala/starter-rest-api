@@ -12,8 +12,12 @@ const postUser = async (req, res) => {
     return res.status(406).send({ status: false, message: error.message });
   } else {
     const users = await user.find();
-    if(value.email===users[0].email && value.password===users[0].password)  return res.status(201).send({ status: true });
-    else  return res.status(401).send({ status: false ,message: 'Wrong Credentials' });
+    if (value.email === users[0].email && value.password === users[0].password)
+      return res.status(201).send({ status: true });
+    else
+      return res
+        .status(401)
+        .send({ status: false, message: "Wrong Credentials" });
   }
 };
 

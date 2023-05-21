@@ -85,6 +85,18 @@ const searchMovie = async (req, res) => {
   return res.status(403).send({ status: false, message: "No title Entered" });
 };
 
+const deepSearchMovie = async (req, res) => {
+  const { s: searchTerm } = req.query;
+  if (searchTerm && searchTerm.trim() !== "") {
+    const searchRequest = await axios.get(
+      `https://yts.mx/api/v2/list_movies.json?limit=50&sort_by=year&query_term=${searchTerm.trim()}`
+    );
+
+    return res.status(201).send(searchRequest);
+  }
+  return res.status(403).send({ status: false, message: "No title Entered" });
+};
+
 const MoviesController = {
   getMovie,
   getMovieByTitle,
@@ -92,6 +104,7 @@ const MoviesController = {
   putMovie,
   deleteMovie,
   searchMovie,
+  deepSearchMovie,
 };
 
 module.exports = { MoviesController };
