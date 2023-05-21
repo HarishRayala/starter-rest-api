@@ -105,6 +105,7 @@ const MoviesController = {
   deleteMovie,
   searchMovie,
   deepSearchMovie,
+  updateRating,
 };
 
 module.exports = { MoviesController };
