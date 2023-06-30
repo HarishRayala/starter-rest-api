@@ -4,7 +4,7 @@ const MovieSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     genre: { type: String, required: true },
-    year: { type: String, required: true },
+    year: { type: Number, required: true },
     language: { type: String, required: true },
     imgURL: { type: String, required: true },
     t720File: { type: String },
@@ -13,8 +13,8 @@ const MovieSchema = new mongoose.Schema(
     season: { type: String },
     episodes: [String],
     tvShow: Boolean,
-    youtube:{type:String},
-    rating: { type: String },
+    youtube: { type: String },
+    rating: { type: Number },
   },
   { timestamps: true }
 );
